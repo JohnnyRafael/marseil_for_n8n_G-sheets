@@ -1,7 +1,5 @@
 # Marseil For n8n - Google Sheets Integration
 
-![Marseil For n8n](https://www.gstatic.com/images/icons/material/system/1x/extension_black_48dp.png)
-
 A powerful Google Sheets Add-on that connects your spreadsheets with n8n workflows through webhooks. This integration allows you to process data and trigger automations directly from your spreadsheets.
 
 ## 🌟 Features
