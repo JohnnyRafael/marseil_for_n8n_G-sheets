@@ -134,11 +134,9 @@ Create the following files in Apps Script:
 
 ---
 
-## 🆘️ Support
+<p align="center">
+  <img src="https://box.ikemo.io/marseil/logo-circle.png" alt="Marseil AI Logo" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+  <a href="https://marseil.ai" style="vertical-align: middle;">Made with ❤️ by Marseil AI</a>
+</p>
 
-For issues or suggestions, open a GitHub issue or contact the developer.
-
----
-
-Made with ❤️ by Marseil AI
 
