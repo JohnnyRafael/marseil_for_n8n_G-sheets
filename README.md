@@ -2,7 +2,7 @@
 
 A lightweight Google Apps Script tool that connects Google Sheets to your **n8n** instance using webhooks. 
 
-*This version is not published on the Google Workspace Marketplace and must be installed manually by copying the code.
+**This version is not published on the Google Workspace Marketplace and must be installed manually by copying the code.
 
 ---
 
@@ -11,7 +11,6 @@ A lightweight Google Apps Script tool that connects Google Sheets to your **n8n*
 - 🔗 Manage webhook endpoints inside Sheets
 - 📊 Use spreadsheet functions to call webhooks
 - 🚀 Trigger n8n workflows from any cell
-- ⚡ Real-time data integration
 - 🔐 Webhooks stored securely per user
 
 ---
