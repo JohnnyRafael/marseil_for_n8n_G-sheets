@@ -1,136 +1,143 @@
-# Marseil For n8n - Google Sheets Integration
+# Marseil For n8n – Google Sheets Integration
 
-A powerful Google Sheets Add-on that connects your spreadsheets with n8n workflows through webhooks. This integration allows you to process data and trigger automations directly from your spreadsheets.
-
-## 🌟 Features
-
-- 🔗 Easy webhook management
-- 📊 Custom spreadsheet functions
-- 🚀 Direct n8n workflow integration
-- ⚡ Real-time data processing
-- 🔒 Secure data handling
-
-## 📋 Prerequisites
-
-- A Google Workspace account
-- Access to Google Sheets
-- An n8n instance with accessible webhooks
-
-## 🚀 Installation
-
-1. Open Google Sheets
-2. Go to Extensions > Add-ons > Get add-ons
-3. Search for "Marseil For n8n"
-4. Click Install
-5. Grant the necessary permissions
-
-## 💡 Usage
-
-### Managing Webhooks
-
-1. Open your Google Sheet
-2. Go to Extensions > Marseil For n8n > Manage Webhooks
-3. In the webhook manager:
-   - Enter a name for your webhook
-   - Paste your n8n webhook URL
-   - Click "Add Webhook"
-
-### Using Webhooks in Spreadsheets
-
-Use the custom function `callWebhook()` in your spreadsheet cells:
-
-```
-=callWebhook(A1, "webhook_name")
-```
-
-Parameters:
-- First parameter: The input value to send to n8n
-- Second parameter: The name of your saved webhook
-
-Example:
-```
-=callWebhook("tell me a joke", "n8n_agent")
-```
-
-## 🔧 Function Reference
-
-### `callWebhook(input, functionName)`
-
-Sends data to an n8n webhook and returns the processed result.
-
-- `input`: The data to send to n8n (string)
-- `functionName`: The name of the saved webhook to use (string)
-
-Returns: The response from your n8n workflow
-
-Example Response:
-```json
-{
-  "output": "Your processed data or response from n8n"
-}
-```
-
-## 🏗️ Development Setup
-
-1. Create a new Google Apps Script project
-2. Copy the following files into your project:
-   - `Code.gs`
-   - `WebhookManager.html`
-   - `appsscript.json`
-
-### Required OAuth Scopes
-
-```json
-{
-  "oauthScopes": [
-    "https://www.googleapis.com/auth/spreadsheets.currentonly",
-    "https://www.googleapis.com/auth/script.container.ui",
-    "https://www.googleapis.com/auth/script.scriptapp"
-  ]
-}
-```
-
-## 🔄 Webhook Flow
-
-1. User enters `=callWebhook()` function in a cell
-2. Function retrieves the webhook URL for the specified name
-3. Data is sent to n8n webhook
-4. n8n processes the data according to your workflow
-5. Response is returned and displayed in the cell
-
-## ⚙️ Technical Details
-
-- Timeout: 120 seconds (2 minutes)
-- Response format: JSON with `output` property
-- Error handling: Returns error messages in cell if something goes wrong
-- User quotas: Uses user's UrlFetchApp quota for API calls
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
-
-## 🔐 Security
-
-- All webhook calls are made using HTTPS
-- Webhook URLs are stored in user properties
-- No sensitive data is stored in script properties
-
-## 🎯 Best Practices
-
-1. Use meaningful webhook names
-2. Test webhooks before using in production
-3. Handle errors appropriately in n8n workflows
-4. Keep webhook responses concise
-5. Monitor usage to stay within quotas
+A lightweight Google Apps Script tool that connects Google Sheets to your **n8n** instance using webhooks. This version is not published on the Google Workspace Marketplace and must be installed manually by copying the code.
 
 ---
 
-Made with ❤️ by Marseil
+## 🌟 Features
+
+- 🔗 Manage webhook endpoints inside Sheets
+- 📊 Use spreadsheet functions to call webhooks
+- 🚀 Trigger n8n workflows from any cell
+- ⚡ Real-time data integration
+- 🔐 Webhooks stored securely per user
+
+---
+
+## 📋 Requirements
+
+- A Google Workspace or Gmail account
+- Access to Google Sheets
+- An n8n instance with active webhook URLs
+
+---
+
+## 🚀 Installation (Manual Setup)
+
+1. Open any Google Sheet
+2. Click `Extensions > Apps Script`
+3. In the Apps Script editor:
+   - Replace any existing code with contents of `Code.gs`
+   - Click `+` and create a new HTML file named `WebhookManager.html`, paste the contents
+   - Open the `Project Settings` (gear icon) and paste the provided `appsscript.json` content into the manifest
+4. Save and authorize the script when prompted
+5. Reload the Sheet — a new menu called **Marseil for n8n** will appear
+
+---
+
+## 💡 Usage
+
+### Manage Webhooks
+
+1. In your sheet, go to `Marseil for n8n > Manage Webhooks`
+2. In the dialog:
+   - Enter a name and webhook URL
+   - Click **Add Webhook**
+   - You can view or delete saved webhooks
+
+### Use Webhooks in Sheets
+
+Use the custom function `=n8nWebhook()` directly in a cell:
+
+```excel
+=n8nWebhook(A1, "n8n_agent")
+```
+
+- First argument: input value
+- Second argument: name of the saved webhook
+
+---
+
+## 🔧 Function Reference
+
+### `n8nWebhook(input, functionName)`
+
+- Sends data to the webhook assigned to `functionName`
+- Returns processed result or an error
+
+#### Parameters:
+- `input`: string value to send
+- `functionName`: name of stored webhook
+
+#### Returns:
+- The `output` field from the webhook response, or error message
+
+---
+
+## 🏗️ Developer Setup
+
+Create the following files in Apps Script:
+
+- **Code.gs**: JavaScript logic
+- **WebhookManager.html**: HTML dialog UI
+- **appsscript.json**: Project manifest (configure menu, permissions)
+
+### Required OAuth Scopes:
+
+```json
+"oauthScopes": [
+  "https://www.googleapis.com/auth/spreadsheets.currentonly",
+  "https://www.googleapis.com/auth/script.container.ui",
+  "https://www.googleapis.com/auth/script.scriptapp",
+  "https://www.googleapis.com/auth/userinfo.email",
+  "https://www.googleapis.com/auth/script.external_request"
+]
+```
+
+---
+
+## 🔄 Webhook Flow
+
+1. User triggers `=n8nWebhook(...)` from a cell
+2. Script loads the named webhook URL from storage
+3. Sends request to the webhook with user input
+4. Receives JSON response with `output`
+5. Returns `output` in the cell
+
+---
+
+## ⚙️ Technical Notes
+
+- Timeout: 120 seconds
+- Response format: JSON
+- All requests sent via `UrlFetchApp`
+- Each user's webhooks are stored in UserProperties
+
+---
+
+## 🔐 Security
+
+- HTTPS enforced
+- Each user's webhook list is private
+- No centralized storage of webhook data
+
+---
+
+## ✅ Best Practices
+
+- Keep webhook responses simple
+- Limit webhook names to lowercase, no spaces
+- Monitor your n8n logs for errors
+- Avoid overly long input/output values
+- Secure your n8n instance properly
+
+---
+
+## 🆘️ Support
+
+For issues or suggestions, open a GitHub issue or contact the developer.
+
+---
+
+Made with ❤️ by Marseil AI
+
