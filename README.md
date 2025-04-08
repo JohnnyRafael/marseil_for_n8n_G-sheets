@@ -1,6 +1,8 @@
 # Marseil For n8n – Google Sheets Integration
 
-A lightweight Google Apps Script tool that connects Google Sheets to your **n8n** instance using webhooks. This version is not published on the Google Workspace Marketplace and must be installed manually by copying the code.
+A lightweight Google Apps Script tool that connects Google Sheets to your **n8n** instance using webhooks. 
+
+*This version is not published on the Google Workspace Marketplace and must be installed manually by copying the code.
 
 ---
 
