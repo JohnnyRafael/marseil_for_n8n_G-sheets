@@ -138,5 +138,3 @@ Create the following files in Apps Script:
   <img src="https://box.ikemo.io/marseil/logo-circle.png" alt="Marseil AI Logo" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
   <a href="https://marseil.ai" style="vertical-align: middle;">Made with ❤️ for all n8n enthusiasts by Marseil AI</a>
 </p>
-
-
